@@ -1,0 +1,50 @@
+.cart_card {
+  width: 100%;
+}
+.card_action {
+  display: flex !important;
+  width: 100% !important;
+  justify-content: space-around !important;
+}
+.img_container {
+  gap: 18px;
+  display: flex;
+  align-items: center;
+}
+.item_content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.img_box {
+  height: 140px;
+  width: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img_box .img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 960px) {
+  .img_container {
+    flex-direction: column !important;
+    margin-bottom: 18px;
+  }
+  .img_box {
+    padding: 15px 0;
+    height: 200px;
+    width: 250px;
+    margin-top: 15px;
+  }
+}
+@media screen and (max-width: 560px) {
+  .card_action {
+    flex-direction: column !important;
+    margin-bottom: 20px !important;
+  }
+}
