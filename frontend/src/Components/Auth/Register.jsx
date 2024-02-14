@@ -61,6 +61,7 @@ const Register = () => {
       navigate("/");
     }
     if (error) {
+      console.log(error)
       toast.error(error, {
         autoClose: 5000,
         theme: "colored",
@@ -141,6 +142,7 @@ const Register = () => {
                   id="phoneNumber"
                   label="Contact Number"
                   name="phoneNumber"
+                  type="number"
                   value={credentials.phoneNumber}
                   onChange={handleOnChange}
                   inputMode="numeric"

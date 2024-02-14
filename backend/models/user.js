@@ -13,18 +13,18 @@ const userSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: [true, "Моля въведете емайл"],
+    required: [true, "Please enter an email"],
     unique: true,
   },
   phoneNumber: {
     type: Number,
-    required: [true, "Моля въведете номер"],
-    maxLength: [30, "Името не трябва да съдържа повече от 30 символа"],
+    required: [true, "Please enter a phone number"],
+    maxLength: [15, "Phone number must be less than 15 numbers"],
   },
   password: {
     type: String,
-    required: [true, "Моля въведете парола"],
-    minLength: [6, "Паролата трябва да е поне 6 цифри"],
+    required: [true, "Please enter a password"],
+    minLength: [6, "Password must be at least 6 characters"],
   },
   role: {
     type: String,

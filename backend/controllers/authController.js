@@ -18,8 +18,6 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
       return next(new ErrorHandler("User already exists", 400));
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-
     if (
       password.length < 8 ||
       !/[A-Z]/.test(password) ||
@@ -35,6 +33,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     }
 
     // Create a new user
+    const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({
       firstName,
       lastName,
@@ -43,18 +42,22 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
       password: hashedPassword,
     });
 
-    await newUser.save();
+    // Validate the new user document
+    await newUser.validate();
+
+    // Save the document
+    const savedUser = await newUser.save();
 
     return res.status(201).json({
       success: true,
-      user: newUser,
-      message: "You have been registered successfully. Please log in..."
+      user: savedUser,
+      message: "You have been registered successfully. Please log in...",
     });
   } catch (error) {
-    console.log(error);
     return next(new ErrorHandler(error.message, 400));
   }
 });
+
 // Login a user => /api/v1/login
 exports.loginUser = (req, res, next) => {
   return new Promise((resolve, reject) => {
@@ -116,7 +119,7 @@ exports.editUser = catchAsyncErrors(async (req, res, next) => {
   const updatedUserData = req.body;
   updatedUserData.phoneNumber &&
     (updatedUserData.phoneNumber = Number(updatedUserData.phoneNumber));
-  console.log(updatedUserData);
+
   try {
     const user = await User.findById(userId);
 
@@ -170,6 +173,12 @@ exports.editUser = catchAsyncErrors(async (req, res, next) => {
 
     res.status(200).json({ success: true, message: "Profile was updated" });
   } catch (error) {
+    // Handling Mongoose Validation Errors
+    if (error.name === "ValidationError") {
+      const message = Object.values(error.errors).map((value) => value.message);
+      return next(new ErrorHandler(message, 400));
+    }
+
     return next(
       new ErrorHandler(error._message || "Internal Server Error", 500)
     );

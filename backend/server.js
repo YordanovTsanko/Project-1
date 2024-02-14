@@ -16,7 +16,7 @@ dotenv.config({ path: ".env" });
 connectDatabase();
 
 const server = app.listen(process.env.PORT, () => {
-  console.log(`Server started on PORT: ${process.env.PORT}`);
+  console.log(`Server started on PORT: ${process.env.PORT} in ${process.env.NODE_ENV} mode`);
 });
 
 // Handle Unhandled Promise rej
