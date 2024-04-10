@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const productSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "Моля въведете име"],
-    maxLength: [30, "Името не трябва да съдържа повече от 30 символа"],
+    required: [true, "Please enter a product name"],
+    maxLength: [100, "Name must be less then 100 characters"],
   },
   img: {
     type: String,
@@ -32,6 +32,12 @@ const productSchema = new mongoose.Schema({
       ],
       message: "Please select an exist category",
     },
+  },
+  description: {
+    type: String,
+    required: [true, "Please enter a product description"],
+    minLength: [200, "Name must be more then 200 characters"],
+    maxLength: [2000, "Name must be less then 2000 characters"],
   },
   stock: {
     type: Number,

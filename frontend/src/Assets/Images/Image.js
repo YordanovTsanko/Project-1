@@ -1,11 +1,8 @@
-export let payment = 'https://res.cloudinary.com/dxguqzge7/image/upload/v1682838910/payment_mkel3w.jpg';
-export let profile = 'https://res.cloudinary.com/dxguqzge7/image/upload/v1682838912/vecteezy_user-avatar-line-style__x94mjc.jpg';
-export let MaleCloth = 'https://res.cloudinary.com/dxguqzge7/image/upload/v1682838911/Male-Cloth_fyyrzb.jpg';
-export let FemaleCloth = 'https://res.cloudinary.com/dxguqzge7/image/upload/v1682838912/Cloths_kpwmp2.jpg';
-export let GroupCloth = 'https://res.cloudinary.com/dxguqzge7/image/upload/v1682838911/Cloth-banner_ylavk9.jpg';
-export let Electronics = 'https://res.cloudinary.com/dxguqzge7/image/upload/v1682838911/Electronics_lrjvlg.jpg';
-export let Jewelry = 'https://res.cloudinary.com/dxguqzge7/image/upload/v1682838911/model-jwellery_qlcjog.jpg';
-export let Shoes = 'https://res.cloudinary.com/dxguqzge7/image/upload/v1682838911/Shoe_e2yc1d.jpg';
-export let Books = 'https://res.cloudinary.com/dxguqzge7/image/upload/v1682838761/Book_lc6ikb.jpg';
-export let EmptyCart = 'https://res.cloudinary.com/dxguqzge7/image/upload/v1682838909/Cart_bk4xgl.jpg';
-export let customerReview = "https://res.cloudinary.com/dxguqzge7/image/upload/v1682838911/Review_bm6chw.jpg";
+export let ManCloth = 'https://img.freepik.com/free-photo/handsome-confident-hipster-modelsexy-unshaven-man-dressed-summer-stylish-green-hoodie-jeans-clothes-fashion-male-with-curly-hairstyle-posing-studio-isolated-grey_158538-26652.jpg';
+export let WomanCloth = 'https://img.freepik.com/free-photo/curly-woman-good-mood-makes-funny-face-stylish-girl-red-beret-fashionable-clothes-has-fun-isolated-background_197531-18884.jpg';
+export let GymAccessories = 'https://www.telegraph.co.uk/content/dam/health-fitness/2023/01/16/TELEMMGLPICT000321896379_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwfSVWeZ_vEN7c6bHu2jJnT8.jpeg';
+export let Electronics = 'https://www.timeshighereducation.com/student/sites/default/files/styles/default/public/istock-544560094.jpg';
+export let Jewelry = 'https://www.gatsbyjewellery.co.uk/wp-content/uploads/2021/04/iStock-118199633-1024x683.jpg';
+export let Shoes = 'https://hips.hearstapps.com/hmg-prod/images/shoe-pile-2023-0109-preview-6446d61957fde.jpg   ';
+
+export let EmptyCart = 'https://img.freepik.com/premium-vector/shopping-cart-with-cross-mark-wireless-paymant-icon-shopping-bag-failure-paymant-sign-online-shopping-vector_662353-912.jpg';

@@ -1,15 +1,15 @@
-import { GroupCloth, Shoes, Electronics, FemaleCloth, MaleCloth, Jewelry } from './Images/Image';
+import { Jewelry, Shoes, Electronics, WomanCloth, ManCloth, GymAccessories } from './Images/Image';
 const data = [
     {
-        img: GroupCloth,
+        img: WomanCloth,
         name: "Woman Cloths"
     },
     {
         img: Shoes,
-        name: "Shoe"
+        name: "Shoes"
     },
     {
-        img: FemaleCloth,
+        img: GymAccessories,
         name: "Gym Accessories"
     },
     {
@@ -17,7 +17,7 @@ const data = [
         name: "Electronics"
     },
     {
-        img: MaleCloth,
+        img: ManCloth,
         name: "Man Cloths"
     },
     {

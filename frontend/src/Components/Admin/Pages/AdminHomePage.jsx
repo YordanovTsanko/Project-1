@@ -1,23 +1,26 @@
-import React, { useEffect, useState } from 'react'
-import { Container } from '@mui/material';
+import React from "react";
+import Container from "@mui/material/Container";
+import ProductChart from "../Components/Charts/ProductChart";
+import AdminNav from "../Components/AdminNav";
 
 const AdminHomePage = () => {
+  return (
+    <Container
+      component="main"
+      maxWidth="lg"
+      sx={{
+        minHeight: "calc(100vh - 224px)",
+        pt: 5,
 
-    const [isAdmin, setAdmin] = useState(false);
+        "@media (min-width: 961px)": {
+          pt: 0,
+        },
+      }}
+    >
+      <AdminNav />
+      <ProductChart />
+    </Container>
+  );
+};
 
-    useEffect(()=>{
-        setAdmin(true)
-    },[setAdmin])
-
-    return (
-        <>
-            {isAdmin && (
-                <Container maxWidth="100%">
-                    <h1 style={{ textAlign: "center", margin: "20px 0", color: "#1976d2" }}>Dashboard </h1>
-                </Container>)}
-
-        </>
-    )
-}
-
-export default AdminHomePage
+export default AdminHomePage;

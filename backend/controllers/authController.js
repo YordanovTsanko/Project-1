@@ -184,3 +184,17 @@ exports.editUser = catchAsyncErrors(async (req, res, next) => {
     );
   }
 });
+
+//Admin get all users => /api/v1/admin/users
+exports.getAdminAllUsers = catchAsyncErrors(async (req, res, next) => {
+  try {
+    const  users = await User.find({});
+
+    res.status(200).json({
+      success: true,
+      users: users,
+    });
+  } catch (error) {
+    return next(new ErrorHandler("Users not found.", 404));
+  }
+});

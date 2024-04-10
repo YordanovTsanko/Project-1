@@ -98,6 +98,11 @@ const Cart = () => {
             }}
           >
             <div className="main-card">
+              <img
+                src={EmptyCart}
+                alt="Empty_cart"
+                className="empty-cart-img"
+              />
               <Typography
                 variant="h6"
                 sx={{
@@ -108,11 +113,6 @@ const Cart = () => {
               >
                 Your Cart is Empty
               </Typography>
-              <img
-                src={EmptyCart}
-                alt="Empty_cart"
-                className="empty-cart-img"
-              />
             </div>
           </Box>
         )}

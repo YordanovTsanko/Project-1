@@ -1,4 +1,3 @@
-import "./login.css";
 import {
   Avatar,
   Button,
@@ -31,13 +30,16 @@ const AdminLogin = () => {
       } else {
         if (user?.role === "admin") {
           console.log("isAdmin");
-        } 
+        }
       }
     }
   }, [user, loading, navigate]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+    if (true) {
+     return navigate("/admin/dashboard");
+    } else {
+    }
   };
 
   return (

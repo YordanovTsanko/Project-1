@@ -174,3 +174,13 @@ exports.clearCartAffterOrder = catchAsyncErrors(async (req, res, next) => {
     cart: user.cartItems,
   });
 });
+//ADMIN Get user orders => /api/v1/admin/orders
+exports.getAllOrders = catchAsyncErrors(async (req, res, next) => {
+
+  const orders = await Orders.find({});
+
+  res.status(200).json({
+    success: true,
+    orders,
+  });
+});

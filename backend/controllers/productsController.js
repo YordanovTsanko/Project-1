@@ -19,13 +19,12 @@ exports.getAllProdcutsByCat = catchAsyncErrors(async (req, res, next) => {
     }
 
     const productsData = await Products.find({
-      category: req.params.category, 
+      category: req.params.category,
     });
 
     if (productsData.length === 0) {
       return next(new ErrorHandler("Products not found", 404));
     }
-
 
     res.status(200).json({
       success: true,
@@ -57,9 +56,30 @@ exports.getSingleProductByID = catchAsyncErrors(async (req, res, next) => {
     product: productData,
   });
 });
+//Search products by Id => /api/v1/product/search/:field
+
+exports.searchProduct = catchAsyncErrors(async (req, res, next) => {
+  const searchString = req.params.field;
+
+  const regex = new RegExp(searchString, "i");
+
+  const products = await Products.find({
+    $or: [
+      { name: { $regex: regex } },
+      { description: { $regex: regex } },
+      { category: { $regex: regex } },
+    ],
+  });
+
+  res.status(200).json({
+    success: true,
+    products: products,
+  });
+});
 //Admin add product => /api/v1/admin/product/new
 exports.addNewProduct = catchAsyncErrors(async (req, res, next) => {
-  //body must include name, img, price, category
+  console.log(req.body);
+  //body must include name, img, price, category,description, @stock
   const product = new Products(req.body);
 
   await product.save();
@@ -68,5 +88,50 @@ exports.addNewProduct = catchAsyncErrors(async (req, res, next) => {
     success: true,
     product: product,
     message: "Order added successfully",
+  });
+});
+//Admin get all product => /api/v1/admin/products
+exports.getAdminAllProdcuts = catchAsyncErrors(async (req, res, next) => {
+  try {
+    const products = await Products.find({});
+
+    res.status(200).json({
+      success: true,
+      products: products,
+    });
+  } catch (error) {
+    return next(new ErrorHandler("Products not found.", 404));
+  }
+});
+
+//Admin get single product => /api/v1/admin/product/:id
+exports.getAdminSingleProductDetails = catchAsyncErrors(
+  async (req, res, next) => {
+    const productId = req.params.id;
+
+    const product = await Products.findById(productId);
+    if (!product) {
+      return next(new ErrorHandler("Product not found", 404));
+    }
+
+    res.status(200).json({
+      success: true,
+      product: product,
+    });
+  }
+);
+//Admin delete product => /api/v1/admin/product/delete/:id
+exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
+  const productId = req.params.id;
+
+  const product = await Products.deleteOne({ _id: productId });
+
+  if (!product) {
+    return next(new ErrorHandler("Product not found", 404));
+  }
+
+  res.status(200).json({
+    success: true,
+    message: "Product deleted successfully",
   });
 });

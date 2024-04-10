@@ -16,12 +16,16 @@ import CheckoutForm from "./Components/Cart/CheckoutForm";
 import UpdateDetails from "./Components/Auth/UpdateDetails";
 import ForgotPasswordForm from "./Components/Auth/ForgotPasswordForm";
 import AdminLogin from "./Components/Admin/Pages/AdminLogin";
+import AdminProductPage from "./Components/Admin/Pages/AdminProductPage";
 import AdminHomePage from "./Components/Admin/Pages/AdminHomePage";
 import CopyRight from "./Components/Layouts/CopyRight";
 import Profile from "./Components/Auth/Profile";
 import ProfileOrders from "./Components/Auth/ProfileOrders";
 import SingleOrder from "./Components/Auth/SingleOrder";
 import ThanksForOrder from "./Components/Cart/ThanksForOrder";
+import AdminUsersPage from "./Components/Admin/Pages/AdminUsersPage";
+import SingleProduct from "./Components/Admin/Components/Products/SingleProduct";
+import AdminOrdersPage from "./Components/Admin/Pages/AdminOrdersPage";
 
 function App() {
   return (
@@ -61,10 +65,13 @@ function App() {
             <Route path="/payment" element={<Payment />} />
             <Route path="/order/placed" element={<ThanksForOrder />} />
 
-
             {/* Admin Routes */}
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin/dashboard" element={<AdminHomePage />} />
+            <Route path="/admin/products" element={<AdminProductPage />} />
+            <Route path="/admin/product/:id" element={<SingleProduct />} />
+            <Route path="/admin/users" element={<AdminUsersPage />} />
+            <Route path="/admin/orders" element={<AdminOrdersPage />} />
           </Routes>
         </div>
         <CopyRight />

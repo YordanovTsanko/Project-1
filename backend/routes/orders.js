@@ -8,6 +8,7 @@ const {
   deleteFromCart,
   getItemsFromCart,
   clearCartAffterOrder,
+  getAllOrders
 } = require("../controllers/ordersController");
 
 router.route("/order/new").post(newOrder);
@@ -18,5 +19,10 @@ router.route("/order/clear/cart").put(clearCartAffterOrder);
 router.route("/cart/add/:id").put(addToCart);
 router.route("/cart/delete/:id").delete(deleteFromCart);
 router.route("/cart").get(getItemsFromCart);
+
+// admin
+
+router.route("/admin/orders").get(getAllOrders);
+
 
 module.exports = router;
