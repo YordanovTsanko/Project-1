@@ -26,15 +26,17 @@ const HomePage = () => {
           variant="h3"
           sx={{
             textAlign: "center",
-            marginTop: 10,
             color: "#1976d2",
             fontWeight: "bold",
+            "@media (max-width:1050px)": {
+              fontSize: "2rem",
+            },
           }}
         >
           Search for a product
         </Typography>
         <Container
-          style={{ marginTop: 30, display: "flex", justifyContent: "center" }}
+          style={{ marginTop: 10, display: "flex", justifyContent: "center" }}
         >
           <SearchBar />
         </Container>
@@ -42,9 +44,12 @@ const HomePage = () => {
           variant="h3"
           sx={{
             textAlign: "center",
-            marginTop: 10,
             color: "#1976d2",
+            mt: 3,
             fontWeight: "bold",
+            "@media (max-width:1050px)": {
+              fontSize: "2rem",
+            },
           }}
         >
           Categories

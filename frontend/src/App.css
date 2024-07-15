@@ -44,11 +44,16 @@ a {
 }
 
 .margin {
-  margin-top: 80px;
+  margin-top: 70px;
   width: 100%;
   padding: 0;
 }
 
+@media screen and (max-width: 1050px) {
+  .margin {
+    margin-top: 45px;
+  }
+}
 @media screen and (max-width: 960px) {
   .all-btn {
     width: 110px;

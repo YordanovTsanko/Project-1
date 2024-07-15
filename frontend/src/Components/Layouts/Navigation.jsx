@@ -59,7 +59,7 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className="nav" style={{ backgroundColor: "#E6E6E6" }}>
+      <nav className="nav">
         <div className="logo">
           <Link to="/">
             <span>Logo</span>
@@ -130,7 +130,6 @@ const Navigation = () => {
                 >
                   <Button
                     variant="contained"
-                    sx={{ marginBottom: 1 }}
                     endIcon={<FiLogOut />}
                     onClick={() => handleClickOpen(setOpenAlert)}
                   >
@@ -159,9 +158,9 @@ const Navigation = () => {
             edge="start"
             color="inherit"
             onClick={handleDrawerOpen}
-            sx={{ display: { md: "none" } }}
+            className="menuIconParent"
           >
-            <AiOutlineMenu style={{ fontSize: 29, marginLeft: 35 }} />
+            <AiOutlineMenu className="menuIcon" />
           </IconButton>
         </div>
       </nav>
