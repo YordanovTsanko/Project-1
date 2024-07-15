@@ -21,7 +21,10 @@ dotenv.config({ path: ".env" });
 //Setting up CORS
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: [
+      "http://localhost:3000",
+      "https://project-1-henna-tau.vercel.app",
+    ],
     methods: "GET,POST,PUT,DELETE",
     optionsSuccessStatus: 204, // No Content status for preflight requests
   })
@@ -89,7 +92,6 @@ app.use("/api/v1", auth);
 app.use("/api/v1", products);
 app.use("/api/v1", orders);
 app.use("/api/v1", reviews);
-
 
 //Middleware errors
 app.use(errorMiddleware);
