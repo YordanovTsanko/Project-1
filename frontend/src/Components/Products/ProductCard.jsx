@@ -87,7 +87,16 @@ const ProductCard = ({ prod }) => {
             />
           </Box>
 
-          <Typography gutterBottom variant="h5">
+          <Typography
+            gutterBottom
+            variant="h5"
+            sx={{
+              mt: 2,
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
             {prod.name.length > 20 ? prod.name.slice(0, 20) + "..." : prod.name}
           </Typography>
 
@@ -96,7 +105,6 @@ const ProductCard = ({ prod }) => {
               display: "flex",
               justifyContent: "space-between",
               width: "100%",
-              padding: "5px 0",
             }}
           >
             <Typography variant="h6" color="primary">

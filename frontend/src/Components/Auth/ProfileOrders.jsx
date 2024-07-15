@@ -41,7 +41,6 @@ const ProfileOrders = () => {
       maxWidth="lg"
       sx={{
         minHeight: "calc(100vh - 224px)",
-        mt: 15,
         [theme.breakpoints.up("md")]: {
           mt: 0,
         },
@@ -51,7 +50,12 @@ const ProfileOrders = () => {
         variant="h4"
         gutterBottom
         sx={{
+          fontWeight: "bold",
           marginTop: 15,
+          color: "#1976d2",
+          "@media (max-width:1050px)": {
+            mt: 10,
+          },
         }}
       >
         My Orders

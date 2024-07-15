@@ -51,8 +51,8 @@ const Register = () => {
       password: credentials.password,
     };
     const data = await dispatch(register(registerData));
-    if(data?.success){
-      navigate("/login")
+    if (data?.success) {
+      navigate("/login");
     }
   };
 
@@ -61,7 +61,7 @@ const Register = () => {
       navigate("/");
     }
     if (error) {
-      console.log(error)
+      console.log(error);
       toast.error(error, {
         autoClose: 5000,
         theme: "colored",
@@ -74,7 +74,7 @@ const Register = () => {
       <Container
         component="main"
         maxWidth="xs"
-        sx={{ marginBottom: 10, minHeight: "calc(100vh - 224px)" }}
+        sx={{ marginBottom: 5, minHeight: "calc(100vh - 224px)" }}
       >
         <CssBaseline />
         <Box
@@ -83,6 +83,9 @@ const Register = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            "@media (max-width:1050px)": {
+              mt: 10,
+            },
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: "#1976d2" }}>

@@ -60,15 +60,13 @@ const Login = () => {
       });
       dispatch(clearErrors());
     }
-  }, [isAuthenticated, navigate, dispatch, error,message]);
+  }, [isAuthenticated, navigate, dispatch, error, message]);
 
   return (
     <Container
       component="main"
       maxWidth="xs"
-      sx={{
-        minHeight: "calc(100vh - 224px)",
-      }}
+      sx={{ marginBottom: 5, minHeight: "calc(100vh - 224px)" }}
     >
       <CssBaseline />
       <Box
@@ -77,6 +75,9 @@ const Login = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          "@media (max-width:1050px)": {
+            mt: 10,
+          },
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: "#1976d2" }}>

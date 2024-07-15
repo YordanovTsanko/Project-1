@@ -41,7 +41,6 @@ const SingleOrder = () => {
       maxWidth="lg"
       sx={{
         minHeight: "calc(100vh - 224px)",
-        mt: 15,
         [theme.breakpoints.up("md")]: {
           mt: 0,
         },
@@ -56,7 +55,18 @@ const SingleOrder = () => {
           {errMessage}
         </Typography>
       ) : (
-        <Paper elevation={3} sx={{ padding: 3 }}>
+        <Paper
+          elevation={3}
+          sx={{
+            padding: 3,
+            mt: 15,
+            mb: 15,
+            "@media (max-width:1050px)": {
+              mt: 10,
+              mb: 10,
+            },
+          }}
+        >
           <Typography variant="h4" gutterBottom>
             Order ID: {orderDetails?._id.slice(0, 4)}
           </Typography>

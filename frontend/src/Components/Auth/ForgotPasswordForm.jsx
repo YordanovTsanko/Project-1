@@ -102,7 +102,11 @@ const ForgotPasswordForm = () => {
                 textAlign: "center",
                 color: "#1976d2",
                 fontWeight: "bold",
-                mb: 5
+                mb: 2,
+                "@media (max-width:1050px)": {
+                  fontSize:"2rem",
+                  width:"80%"
+                },
               }}
             >
               Email Sent Successfully !!!

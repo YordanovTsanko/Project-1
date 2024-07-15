@@ -6,7 +6,6 @@ import {
   Box,
   Button,
   MenuItem,
-  FormControl,
   Select,
   Typography,
 } from "@mui/material";
@@ -69,6 +68,7 @@ const SingleCategory = () => {
           maxWidth="xl"
           sx={{
             mt: 15,
+            mb: 15,
             display: "flex",
             justifyContent: "start",
             flexDirection: "column",
@@ -82,6 +82,7 @@ const SingleCategory = () => {
                   display: "flex",
                   alignItems: "flex-end",
                   flexDirection: "column",
+                  mb: 4,
                 }}
               >
                 <Button endIcon={<BiFilterAlt />}>Filters</Button>
@@ -105,9 +106,10 @@ const SingleCategory = () => {
                   display: "grid",
                   gridTemplateColumns: {
                     xs: "repeat(1, 1fr)",
-                    sm: "repeat(5, 1fr)",
+                    md: "repeat(3, 1fr)",
+                    lg: "repeat(4, 1fr)",
                   },
-                  gap: 2,
+                  gap: 4,
                   placeItems: {
                     xs: "center",
                   },
@@ -119,24 +121,13 @@ const SingleCategory = () => {
                       display: "flex",
                       justifyContent: "center",
                       flexDirection: "column",
+                      width: "100%"
                     }}
                   >
-                    {" "}
-                    <Box sx={{ minWidth: 140 }}>
-                      <FormControl sx={{ width: 140 }}>
-                        <Box
-                          sx={{
-                            display: "flex",
-                            justifyContent: "flex-end",
-                            gap: 1,
-                            width: "80vw",
-                          }}
-                        ></Box>
-                      </FormControl>
-                    </Box>
                     <Link
                       to={`/product/type/${cat}/${prod._id}`}
                       key={prod._id}
+                      style={{width:"100%"}}
                     >
                       <ProductCard prod={prod} />
                     </Link>
@@ -153,8 +144,21 @@ const SingleCategory = () => {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
+                alignItems: "center",
               }}
             >
+              <img
+                src="https://cdn2.iconfinder.com/data/icons/oops-404-error/64/208_404-error-oops-page-browser-computer-512.png"
+                alt="404 Error"
+                style={{
+                  color: "red",
+                  width: "100%",
+                  maxWidth: "212px",
+                  height: "auto",
+                  display: "block",
+                  margin: "0 auto",
+                }}
+              />
               <Typography
                 variant="h3"
                 sx={{
@@ -162,10 +166,26 @@ const SingleCategory = () => {
                   textAlign: "center",
                   color: "#1976d2",
                   fontWeight: "bold",
+                  "@media (max-width:1050px)": {
+                    fontSize: "2.4rem",
+                  },
                 }}
               >
                 {error}
               </Typography>
+              <Button sx={{ mt: 10 }}>
+                <Link
+                  to="/"
+                  style={{
+                    display: "inline-block",
+                    color: "red",
+                    textDecoration: "none",
+                    borderBottom: "2px solid red",
+                  }}
+                >
+                  Go Back
+                </Link>
+              </Button>
             </Container>
           )}
         </Container>

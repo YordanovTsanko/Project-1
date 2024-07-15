@@ -36,13 +36,12 @@ const productSchema = new mongoose.Schema({
   description: {
     type: String,
     required: [true, "Please enter a product description"],
-    minLength: [200, "Name must be more then 200 characters"],
-    maxLength: [2000, "Name must be less then 2000 characters"],
+    minLength: [200, "Description must be more then 200 characters"],
+    maxLength: [2000, "Desctiption must be less then 2000 characters"],
   },
   stock: {
     type: Number,
     default: 1,
-    required: [true, "Моля изберете бройка на продукта"],
   },
 });
 

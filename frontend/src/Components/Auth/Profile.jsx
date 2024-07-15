@@ -22,7 +22,7 @@ const Profile = () => {
         minHeight: "calc(100vh - 224px)",
       }}
     >
-      <Avatar sx={{ m: 1, bgcolor: "#1976d2", width: 100, height: 100 }}>
+      <Avatar sx={{ mt: 5, bgcolor: "#1976d2", width: 100, height: 100 }}>
         <img
           src="https://surgassociates.com/wp-content/uploads/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.jpg"
           alt="User Avatar"
