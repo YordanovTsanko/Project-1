@@ -130,7 +130,7 @@ const Navigation = () => {
                 >
                   <Button
                     variant="contained"
-                    endIcon={<FiLogOut />}
+                    endicon={<FiLogOut />}
                     onClick={() => handleClickOpen(setOpenAlert)}
                   >
                     <Typography variant="button"> Logout</Typography>
@@ -263,9 +263,9 @@ const Navigation = () => {
                   variant="contained"
                   className="nav-icon-span"
                   sx={{ marginBottom: 1 }}
-                  endIcon={<FiLogOut />}
+                  endicon={<FiLogOut />}
                 >
-                  <Typography variant="button" endIcon={<FiLogOut />}>
+                  <Typography variant="button" endicon={<FiLogOut />}>
                     Logout
                   </Typography>
                 </Button>
@@ -295,7 +295,7 @@ const Navigation = () => {
           <Link to="/">
             <Button
               variant="contained"
-              endIcon={<FiLogOut />}
+              endicon={<FiLogOut />}
               color="primary"
               onClick={handleLogOut}
             >
@@ -305,7 +305,7 @@ const Navigation = () => {
           <Button
             variant="contained"
             color="error"
-            endIcon={<AiFillCloseCircle />}
+            endicon={<AiFillCloseCircle />}
             onClick={() => handleClose(setOpenAlert)}
           >
             Close

@@ -13,7 +13,11 @@ import {
   Grid,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import { AiFillCloseCircle, AiOutlineLogin } from "react-icons/ai";
+import {
+  AiFillCloseCircle,
+  AiOutlineLogin,
+  AiOutlineArrowLeft,
+} from "react-icons/ai";
 import CartCard from "../../Components/Cart/CartCard";
 import "./Cart.css";
 import { EmptyCart } from "../../Assets/Images/Image";
@@ -65,25 +69,18 @@ const Cart = () => {
   return (
     <>
       <CssBaseline />
-      <Container
-        component="main"
-        maxWidth="lg"
-        sx={{
-          minHeight: "calc(100vh - 224px)",
-          pt: 1, 
-
-          "@media (min-width: 961px)": {
-            pt: 0, 
-          },
-        }}
-      >
+      <Container component="main" maxWidth="lg">
         <Typography
           variant="h3"
           sx={{
             textAlign: "center",
-            marginTop: 10,
             color: "#1976d2",
             fontWeight: "bold",
+            mt: 15,
+            "@media (max-width:1050px)": {
+              mt: 10,
+              fontSize: "2.4rem",
+            },
           }}
         >
           Cart
@@ -95,14 +92,10 @@ const Cart = () => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              mt: 2,
             }}
           >
             <div className="main-card">
-              <img
-                src={EmptyCart}
-                alt="Empty_cart"
-                className="empty-cart-img"
-              />
               <Typography
                 variant="h6"
                 sx={{
@@ -113,11 +106,40 @@ const Cart = () => {
               >
                 Your Cart is Empty
               </Typography>
+              <img
+                src={EmptyCart}
+                alt="Empty_cart"
+                className="empty-cart-img"
+              />
+              <Link
+                to="/"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  textAlign: "center",
+                  color: "red",
+                  fontWeight: "bold",
+                  fontSize: "1rem",
+                  textDecoration: "none",
+                  borderBottom: "2px solid red",
+                }}
+              >
+                <AiOutlineArrowLeft style={{ marginRight: "5px" }} />
+                Go Back to Home
+              </Link>
             </div>
           </Box>
         )}
         <Container
-          sx={{ display: "flex", flexDirection: "column", mb: 10, mt: 8 }}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            mb: 10,
+            mt: 8,
+            "@media (max-width:1050px)": {
+              mt: 3,
+            },
+          }}
         >
           <Box
             sx={{
@@ -157,7 +179,7 @@ const Cart = () => {
                 }}
               >
                 <CardContent>
-                  <Typography variant="div" component="h1">
+                  <Typography variant="div" component="h2">
                     Order Summary
                   </Typography>
                   <Typography variant="subtitle2">
@@ -168,6 +190,7 @@ const Cart = () => {
                       sx={{
                         display: "flex",
                         justifyContent: "space-between",
+                        alignItems: "center",
                         marginTop: 2,
                       }}
                     >
@@ -186,6 +209,7 @@ const Cart = () => {
                       sx={{
                         display: "flex",
                         justifyContent: "space-between",
+                        alignItems: "center",
                         marginTop: 2,
                       }}
                     >
@@ -204,6 +228,7 @@ const Cart = () => {
                       sx={{
                         display: "flex",
                         justifyContent: "space-between",
+                        alignItems: "center",
                         marginTop: 2,
                       }}
                     >
@@ -225,7 +250,7 @@ const Cart = () => {
                 <Button
                   variant="contained"
                   size="large"
-                  endIcon={<IoBagCheckOutline />}
+                  endicon={<IoBagCheckOutline />}
                   color="primary"
                   sx={{
                     marginTop: {
@@ -264,7 +289,7 @@ const Cart = () => {
           <Button
             variant="contained"
             onClick={() => navigate("/login")}
-            endIcon={<AiOutlineLogin />}
+            endicon={<AiOutlineLogin />}
             color="primary"
           >
             Login
@@ -272,7 +297,7 @@ const Cart = () => {
           <Button
             variant="contained"
             color="error"
-            endIcon={<AiFillCloseCircle />}
+            endicon={<AiFillCloseCircle />}
             onClick={() => {
               setOpenAlert(false);
               navigate("/");
