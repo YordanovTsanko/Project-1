@@ -12,15 +12,11 @@ const ContactUs = () => {
     <Container
       maxWidth="lg"
       sx={{
-        backgroundColor: "#e3f2fd",
         padding: "20px",
-        borderRadius: "10px",
-        boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
         minHeight: "calc(100vh - 224px)",
-        mt: 10,
 
         "@media (min-width: 961px)": {
-          mt: 5,
+          mt: 0,
           mb: 5,
         },
       }}

@@ -2,14 +2,16 @@ import React from "react";
 import { Container, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import CategoryCard from "../../Components/Products/CategoryCard";
-import CategoriesData from "../../Assets/HomePageBanner";
+import CategoriesData from "../../Assets/HomePageCategories";
 import Carousel from "../../Components/Layouts/Carousel";
 import SearchBar from "../../Components/Layouts/SearchBar";
 
 const HomePage = () => {
-
   return (
     <>
+      <Box>
+        <Carousel />
+      </Box>
       <Container
         maxWidth="xl"
         style={{
@@ -20,9 +22,6 @@ const HomePage = () => {
           marginBottom: 70,
         }}
       >
-        <Box padding={1}>
-          <Carousel />
-        </Box>
         <Typography
           variant="h3"
           sx={{

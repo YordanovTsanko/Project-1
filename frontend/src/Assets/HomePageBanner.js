@@ -1,28 +1,20 @@
-import { Jewelry, Shoes, Electronics, WomanCloth, ManCloth, GymAccessories } from './Images/Image';
+import { BannerOne,BannerTwo,BannerThree,BannerFour } from './Images/Image';
 const data = [
     {
-        img: WomanCloth,
-        name: "Woman Cloths"
+        img: BannerOne,
+        name: "BannerOne"
     },
     {
-        img: Shoes,
-        name: "Shoes"
+        img: BannerTwo,
+        name: "BannerTwo"
     },
     {
-        img: GymAccessories,
-        name: "Gym Accessories"
+        img: BannerThree,
+        name: "BannerThree"
     },
     {
-        img: Electronics,
-        name: "Electronics"
-    },
-    {
-        img: ManCloth,
-        name: "Man Cloths"
-    },
-    {
-        img: Jewelry,
-        name: "Jewelry"
+        img: BannerFour,
+        name: "BannerFour"
     },
 ]
 export default data
