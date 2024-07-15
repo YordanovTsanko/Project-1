@@ -17,11 +17,17 @@ const ContactUs = () => {
 
         "@media (min-width: 961px)": {
           mt: 0,
-          mb: 5,
         },
       }}
     >
-      <Typography variant="h4" gutterBottom>
+      <Typography
+        variant="h4"
+        sx={{
+          color: "#1976d2",
+          fontWeight: "bold",
+        }}
+        gutterBottom
+      >
         Contact Us
       </Typography>
       <Typography variant="body1" paragraph>

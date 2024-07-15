@@ -73,6 +73,10 @@ const SearchBar = () => {
               <Alert
                 severity="error"
                 sx={{
+                  display: "flex",
+                  alignItems:"center",
+                  padding: 0,
+                  pl: 2,
                   fontSize: "1.1rem",
                 }}
               >

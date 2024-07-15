@@ -78,9 +78,14 @@ const CheckoutForm = () => {
           variant="h3"
           sx={{
             textAlign: "center",
-            marginTop: 10,
+            marginTop: 4,
             color: "#1976d2",
             fontWeight: "bold",
+
+            "@media (max-width:1050px)": {
+              mt: 3,
+              fontSize: "2.4rem",
+            },
           }}
         >
           Shipping Details
@@ -122,7 +127,7 @@ const CheckoutForm = () => {
                 variant="outlined"
                 fullWidth
                 InputProps={{
-                  inputMode: 'numeric',
+                  inputMode: "numeric",
                 }}
               />
             </Grid>

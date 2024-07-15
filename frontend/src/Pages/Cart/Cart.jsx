@@ -69,7 +69,11 @@ const Cart = () => {
   return (
     <>
       <CssBaseline />
-      <Container component="main" maxWidth="lg">
+      <Container
+        component="main"
+        maxWidth="lg"
+        sx={{ minHeight: "calc(100vh - 224px)" }}
+      >
         <Typography
           variant="h3"
           sx={{
@@ -85,7 +89,7 @@ const Cart = () => {
         >
           Cart
         </Typography>
-        {isAuthenticated && cartItems.length <= 0 && (
+        {(!isAuthenticated || (isAuthenticated && cartItems.length <= 0)) && (
           <Box
             sx={{
               width: "100%",

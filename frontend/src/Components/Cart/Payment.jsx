@@ -50,8 +50,8 @@ const Payment = () => {
     };
     const orderPlaced = await dispatch(createOrder(order));
 
-    if(orderPlaced?.success){
-      navigate("/order/placed")
+    if (orderPlaced?.success) {
+      navigate("/order/placed");
     }
   };
 
@@ -99,10 +99,14 @@ const Payment = () => {
           variant="h3"
           sx={{
             textAlign: "center",
-            mt: 5,
+            mt: 4,
             mb: 5,
             color: "#1976d2",
             fontWeight: "bold",
+            "@media (max-width:1050px)": {
+              mt: 2,
+              fontSize: "2.4rem",
+            },
           }}
         >
           Shipping Details
@@ -184,6 +188,11 @@ const Payment = () => {
             mb: 5,
             color: "#1976d2",
             fontWeight: "bold",
+            "@media (max-width:1050px)": {
+              mt: 2,
+              mb: 2,
+              fontSize: "2.4rem",
+            },
           }}
         >
           Order Summary
@@ -258,6 +267,11 @@ const Payment = () => {
           mb: 5,
           color: "#1976d2",
           fontWeight: "bold",
+          "@media (max-width:1050px)": {
+            mt: 2,
+            mb: 2,
+            fontSize: "2.4rem",
+          },
         }}
       >
         Payment Details
