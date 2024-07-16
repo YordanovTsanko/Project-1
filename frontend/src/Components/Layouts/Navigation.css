@@ -79,7 +79,7 @@ nav ul .nav-links:hover:after {
 }
 @media (max-width: 1050px) {
   .nav {
-    padding: 0;
+    padding: 9px 0;
   }
   .nav-items {
     line-height: 10px;

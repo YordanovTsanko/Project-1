@@ -2,13 +2,7 @@ import "./singlecategory.css";
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Container } from "@mui/system";
-import {
-  Box,
-  Button,
-  MenuItem,
-  Select,
-  Typography,
-} from "@mui/material";
+import { Box, Button, MenuItem, Select, Typography } from "@mui/material";
 import Loading from "../Layouts/Loading";
 import { BiFilterAlt } from "react-icons/bi";
 import ProductCard from "./ProductCard";
@@ -67,7 +61,7 @@ const SingleCategory = () => {
         <Container
           maxWidth="xl"
           sx={{
-            mt: 15,
+            mt: 12,
             mb: 15,
             display: "flex",
             justifyContent: "start",
@@ -122,13 +116,13 @@ const SingleCategory = () => {
                       display: "flex",
                       justifyContent: "center",
                       flexDirection: "column",
-                      width: "100%"
+                      width: "100%",
                     }}
                   >
                     <Link
                       to={`/product/type/${cat}/${prod._id}`}
                       key={prod._id}
-                      style={{width:"100%"}}
+                      style={{ width: "100%" }}
                     >
                       <ProductCard prod={prod} />
                     </Link>
@@ -149,7 +143,7 @@ const SingleCategory = () => {
               }}
             >
               <img
-                src="https://cdn2.iconfinder.com/data/icons/oops-404-error/64/208_404-error-oops-page-browser-computer-512.png"
+                src="https://static.vecteezy.com/system/resources/thumbnails/022/278/184/small_2x/file-not-found-3d-render-icon-illustration-with-transparent-background-empty-state-png.png"
                 alt="404 Error"
                 style={{
                   color: "red",

@@ -1,4 +1,4 @@
-import {
+  import {
   Button,
   Card,
   CardActionArea,
@@ -42,6 +42,7 @@ const CartCard = ({ product, handleRemoveFromCart }) => {
             variant="contained"
             color="error"
             onClick={() => handleRemoveFromCart(product.product)}
+            className={styles.trash_button}
           >
             <AiFillDelete style={{ fontSize: 15 }} />
           </Button>
