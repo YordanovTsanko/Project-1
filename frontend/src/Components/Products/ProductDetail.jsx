@@ -78,7 +78,7 @@ const ProductDetail = () => {
   const increaseQuantity = () => {
     if (productQuantity < product.stock) {
       setProductQuantity((prev) => prev + 1);
-    }else{
+    } else {
       toast.error(`Maximum available items in stock: ${product.stock}`, {
         autoClose: 1000,
         theme: "colored",
@@ -194,11 +194,16 @@ const ProductDetail = () => {
                       color: "white",
                       width: "150px",
                       fontWeight: "bold",
-                      my: 2,
+                      mt: 5,
+                      mb: 2,
+                      "@media (max-width:901px)": {
+                        mt: 0,
+                      },
                     }}
-                    style={{ margin: "0" }}
                   />
-                  <Typography variant="h3">{product.name}</Typography>
+                  <Typography variant="h4" sx={{ mb: 2 }}>
+                    {product.name}
+                  </Typography>
                   <Typography>{product.description}</Typography>
                   <Rating
                     name="read-only"
@@ -216,12 +221,17 @@ const ProductDetail = () => {
                       },
                     }}
                   >
-                    <div
-                      style={{
+                    <Box
+                      sx={{
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "space-between",
-                        marginTop: 20,
+                        "@media (max-width:515px)": {
+                          mt: 2,
+                          gap: 2,
+                          flexDirection: "column",
+                          alignItems: "flex-start",
+                        },
                       }}
                     >
                       <ButtonGroup
@@ -251,7 +261,7 @@ const ProductDetail = () => {
                           £{product.price}
                         </Typography>
                       </div>
-                    </div>
+                    </Box>
                   </Box>
                   <div
                     style={{
