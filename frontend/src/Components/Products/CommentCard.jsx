@@ -13,20 +13,26 @@ import { useState } from "react";
 import { AiFillEdit, AiFillDelete, AiOutlineSend } from "react-icons/ai";
 import { GiCancel } from "react-icons/gi";
 import { useDispatch } from "react-redux";
-import { editReview, getProductReviews } from "../../Redux/Actions/reviewsActions";
+import {
+  editReview,
+  getProductReviews,
+  deleteReviews,
+} from "../../Redux/Actions/reviewsActions";
 
-const CommentCard = ({ review, productId,isAuthToEdit }) => {
+const CommentCard = ({ review, productId, isAuthToEdit }) => {
   const dispatch = useDispatch();
 
   const [edit, setEdit] = useState(false);
   const [editedComment, setEditedComment] = useState("");
 
-  const deleteComment = async () => {};
+  const deleteComment = async () => {
+    dispatch(deleteReviews(review._id));
+  };
 
   const editComment = async () => {
     dispatch(editReview({ comment: editedComment }, review._id));
-    
-    dispatch(getProductReviews(productId))
+
+    dispatch(getProductReviews(productId));
   };
 
   function formatTimestamp(timestamp) {
@@ -39,7 +45,6 @@ const CommentCard = ({ review, productId,isAuthToEdit }) => {
       second: "2-digit",
     });
   }
-
 
   return (
     <Grid
@@ -130,7 +135,7 @@ const CommentCard = ({ review, productId,isAuthToEdit }) => {
         )}
 
         <p style={{ textAlign: "left", color: "gray", margin: "20px 0" }}>
-          {formatTimestamp(review.createdAt)}
+          {formatTimestamp(review.updatedAt)}
         </p>
 
         {isAuthToEdit && (

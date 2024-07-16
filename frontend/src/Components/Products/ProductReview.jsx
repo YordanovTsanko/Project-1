@@ -77,6 +77,7 @@ const ProductReview = ({ isAuthenticated, setOpenAlert, id }) => {
 
   useEffect(() => {
     if (error) {
+      console.log(error)
       toast.error(error || "Unknown error, please try again later!", {
         autoClose: 1500,
         theme: "colored",
@@ -211,8 +212,6 @@ const ProductReview = ({ isAuthenticated, setOpenAlert, id }) => {
             </Select>
             {(filteredReviews.length > 0 ? filteredReviews : reviews).map(
               (review) => {
-                console.log(filteredReviews)
-                console.log(reviews)
                 let isAuthToEdit = !userLoading && review.userID === user?._id;
                 return (
                   <CommentCard
@@ -228,7 +227,6 @@ const ProductReview = ({ isAuthenticated, setOpenAlert, id }) => {
         ) : (
           <Typography
             sx={{ textAlign: "center" }}
-            style={{ marginTop: "30px" }}
           >
             No reviews have been submitted for this product yet. Be the first to
             add a review!
