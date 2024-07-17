@@ -117,10 +117,13 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
     );
   }
 
-  await Reviews.findByIdAndDelete(reviewId);
+  const {rdata } = await Reviews.findByIdAndDelete(reviewId);
+
+  console.log(rdata)
 
   res.status(200).json({
     success: true,
+    review : {},
     message: "Review deleted successfully",
   });
 });

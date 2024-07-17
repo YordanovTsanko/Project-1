@@ -73,10 +73,9 @@ export const editReview = (newData, reviewId) => async (dispatch) => {
       newData,
       config
     );
-
     dispatch({
       type: EDIT_REVIEW_SUCCESS,
-      payload: data,
+      payload: data.review,
     });
   } catch (error) {
     console.log(error);
@@ -91,13 +90,13 @@ export const deleteReviews = (productId) => async (dispatch) => {
     dispatch({ type: DELETE_REVIEW_REQUEST });
 
     const { data } = await axios.delete(`/api/v1/review/delete/${productId}`);
-
+console.log(data)
     dispatch({
       type: DELETE_REVIEW_SUCCESS,
       payload: data.reviews,
     });
 
-    toast.success("Review deleted successfully", {
+    toast.success(data.message, {
       autoClose: 500,
       theme: "colored",
     });
