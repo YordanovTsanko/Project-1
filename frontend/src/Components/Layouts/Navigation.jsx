@@ -110,7 +110,7 @@ const Navigation = () => {
                         <CgProfile
                           style={{
                             fontSize: 29,
-                            marginBottom: -6,
+                            marginBottom: -8,
                             marginRight: 6,
                           }}
                         />

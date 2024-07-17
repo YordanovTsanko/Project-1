@@ -24,13 +24,16 @@ const CommentCard = ({ review, productId, isAuthToEdit }) => {
 
   const [edit, setEdit] = useState(false);
   const [editedComment, setEditedComment] = useState("");
+  const [editedRating, setEditedRating] = useState(review.rating);
 
   const deleteComment = async () => {
     dispatch(deleteReviews(review._id));
   };
 
   const editComment = async () => {
-    dispatch(editReview({ comment: editedComment }, review._id));
+    dispatch(
+      editReview({ comment: editedComment, rating: editedRating }, review._id)
+    );
 
     dispatch(getProductReviews(productId));
   };
@@ -65,7 +68,7 @@ const CommentCard = ({ review, productId, isAuthToEdit }) => {
       </Grid>
       <Grid justifyContent="left" item xs zeroMinWidth>
         <h4 style={{ margin: 0, textAlign: "left" }}>{review.userName}</h4>
-        <p style={{ textAlign: "left", marginTop: 10 }}>
+        <div style={{ textAlign: "left", marginTop: 10 }}>
           {!edit && (
             <Rating
               name="read-only"
@@ -77,11 +80,12 @@ const CommentCard = ({ review, productId, isAuthToEdit }) => {
           {edit && (
             <Rating
               name="simple-controlled"
-              value={review.rating}
+              value={editedRating}
               precision={0.5}
+              onChange={(event, newValue) => setEditedRating(newValue)}
             />
           )}
-        </p>
+        </div>
         <p
           style={{
             textAlign: "left",
@@ -92,27 +96,24 @@ const CommentCard = ({ review, productId, isAuthToEdit }) => {
         >
           {review.comment}
         </p>
-        <p>
-          {edit && (
-            <TextField
-              id="standard-basic"
-              value={editedComment}
-              label="Edit Review"
-              multiline
-              className="comment"
-              variant="standard"
-              sx={{ width: "90%", cursor: "pointer" }}
-              onChange={(e) => setEditedComment(e.target.value)}
-            />
-          )}
-        </p>
-
         {edit && (
-          <div
-            style={{
+          <TextField
+            id="standard-basic"
+            value={editedComment}
+            label="Edit Review"
+            multiline
+            className="comment"
+            variant="standard"
+            sx={{ width: "90%", cursor: "pointer" }}
+            onChange={(e) => setEditedComment(e.target.value)}
+          />
+        )}
+        {edit && (
+          <Box
+            sx={{
               display: "flex",
-              gap: 5,
-              margin: 10,
+              gap: 1,
+              margin: 1,
             }}
           >
             <Button
@@ -120,8 +121,7 @@ const CommentCard = ({ review, productId, isAuthToEdit }) => {
               variant="contained"
               onClick={editComment}
             >
-              {" "}
-              {<AiOutlineSend />}{" "}
+              <AiOutlineSend />
             </Button>
             <Button
               sx={{ width: 10, borderRadius: "30px" }}
@@ -129,15 +129,13 @@ const CommentCard = ({ review, productId, isAuthToEdit }) => {
               color="error"
               onClick={() => setEdit(false)}
             >
-              {<GiCancel style={{ fontSize: 15, color: "white" }} />}{" "}
+              <GiCancel style={{ fontSize: 15, color: "white" }} />
             </Button>
-          </div>
+          </Box>
         )}
-
         <p style={{ textAlign: "left", color: "gray", margin: "20px 0" }}>
           {formatTimestamp(review.updatedAt)}
         </p>
-
         {isAuthToEdit && (
           <Box sx={{ height: 20, transform: "translateZ(0px)", flexGrow: 1 }}>
             <SpeedDial

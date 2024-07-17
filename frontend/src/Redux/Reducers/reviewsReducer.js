@@ -33,11 +33,16 @@ export const reviewsReducer = (state = initialState, action) => {
       };
     case CREATE_REVIEW_SUCCESS:
     case EDIT_REVIEW_SUCCESS:
-    case DELETE_REVIEW_SUCCESS:
       return {
         ...state,
         loading: false,
         review: action.payload,
+      };
+    case DELETE_REVIEW_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        reviews: state.reviews.filter(review => review.id !== action.payload),
       };
     case GET_PRODUCT_REVIEWS_SUCCESS:
       return {

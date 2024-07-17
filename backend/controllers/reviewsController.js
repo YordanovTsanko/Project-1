@@ -65,7 +65,7 @@ exports.getProductReviews = catchAsyncErrors(async (req, res, next) => {
 // Edit review => /api/v1/review/edit/:id
 exports.editReview = catchAsyncErrors(async (req, res, next) => {
   const reviewId = req.params.id;
-  const { comment } = req.body;
+  const { comment, rating } = req.body;
 
   if (!req.user) {
     return next(
@@ -84,8 +84,11 @@ exports.editReview = catchAsyncErrors(async (req, res, next) => {
       new ErrorHandler("You are not authorized to edit this review", 403)
     );
   }
-
+  if (rating <= 0 || rating > 5) {
+    return next(new ErrorHandler("Please select rating stars", 401));
+  }
   review.comment = comment;
+  review.rating = rating;
 
   await review.save();
 
@@ -117,13 +120,11 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
     );
   }
 
-  const {rdata } = await Reviews.findByIdAndDelete(reviewId);
-
-  console.log(rdata)
+  const rdata = await Reviews.findByIdAndDelete(reviewId);
 
   res.status(200).json({
     success: true,
-    review : {},
+    review: rdata,
     message: "Review deleted successfully",
   });
 });
@@ -134,11 +135,8 @@ exports.checkIsUserAuchToEditDel = catchAsyncErrors(async (req, res, next) => {
   const userId = req.user._id.toString();
 
   if (reviewId !== userId) {
-    return next(
-      new ErrorHandler("You are not authorized for this.", 403)
-    );
+    return next(new ErrorHandler("You are not authorized for this.", 403));
   }
-
 
   res.status(200).json({
     success: true,
