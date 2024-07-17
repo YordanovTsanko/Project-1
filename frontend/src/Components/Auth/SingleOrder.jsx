@@ -3,16 +3,11 @@ import {
   Typography,
   Paper,
   TableContainer,
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
+  CardMedia,
   Grid,
   CircularProgress,
   useTheme,
   Box,
-  Avatar,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -67,10 +62,28 @@ const SingleOrder = () => {
             },
           }}
         >
-          <Typography variant="h4" gutterBottom>
+          <Typography
+            variant="h4"
+            sx={{
+              color: "#1976d2",
+              fontWeight: "bold",
+              "@media (max-width:610px)": {
+                fontSize: "2rem",
+              },
+            }}
+            gutterBottom
+          >
             Order ID: {orderDetails?._id.slice(0, 4)}
           </Typography>
-          <Typography variant="h6" gutterBottom>
+          <Typography
+            variant="h6"
+            sx={{
+              "@media (max-width:610px)": {
+                fontSize: "1rem",
+              },
+            }}
+            gutterBottom
+          >
             Order status:{" "}
             <b style={{ color: "orange" }}>
               {orderDetails?.orderStatus.substring(0, 1).toUpperCase() +
@@ -78,38 +91,108 @@ const SingleOrder = () => {
             </b>
           </Typography>
           <TableContainer>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>Product</TableCell>
-                  <TableCell>Quantity</TableCell>
-                  <TableCell>Price</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {orderDetails?.orderItems?.map((item) => (
-                  <TableRow key={item.product}>
-                    <TableCell>
-                      <Box display="flex" alignItems="center">
-                        <Avatar
-                          src={item.image}
-                          alt={item.name}
-                          sx={{
-                            width: 50,
-                            height: 50,
-                            marginRight: 1,
-                            borderRadius: 0,
-                          }}
-                        />
-                        <Typography variant="body1">{item.name}</Typography>
-                      </Box>
-                    </TableCell>
-                    <TableCell>{item.quantity}</TableCell>
-                    <TableCell>{`£${item.price.toFixed(2)}`}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+            <Box
+              sx={{
+                "@media (min-width: 611px)": {
+                  display: "block",
+                },
+                "@media (max-width: 610px)": {
+                  display: "grid",
+                  gap: 2,
+                },
+              }}
+            >
+              {orderDetails?.orderItems?.map((item) => (
+                <Paper
+                  key={item.product}
+                  elevation={3}
+                  sx={{
+                    padding: 2,
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    "@media (max-width: 610px)": {
+                      display: "block",
+                      padding: 2,
+                    },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                      "@media (max-width: 610px)": {
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                      },
+                    }}
+                  >
+                    <CardMedia
+                      component="img"
+                      src={item.image}
+                      alt={item.name}
+                      sx={{
+                        width: 110,
+                        height: 110,
+                        objectFit: "fill",
+                        marginRight: 2,
+                        borderRadius: 1,
+                        "@media (max-width: 610px)": {
+                          width: 80,
+                          height: 80,
+                          marginBottom: 1,
+                        },
+                      }}
+                    />
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                        "@media (max-width: 610px)": {
+                          textAlign: "left",
+                        },
+                      }}
+                    >
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          fontWeight: "bold",
+                          "@media (max-width: 610px)": {
+                            fontSize: "0.6rem",
+                          },
+                        }}
+                      >
+                        {item.name}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: "text.secondary",
+                          "@media (max-width: 610px)": {
+                            fontSize: "0.9rem",
+                          },
+                        }}
+                      >
+                        Quantity: {item.quantity}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: "text.secondary",
+                          "@media (max-width: 610px)": {
+                            fontSize: "0.9rem",
+                          },
+                        }}
+                      >
+                        Price: £{item.price.toFixed(2)}
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Paper>
+              ))}
+            </Box>
           </TableContainer>
           <Typography variant="h6" sx={{ marginTop: 2 }}>
             Total Price: £{orderDetails?.itemsPrice.toFixed(2)}
