@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { toast } from "react-toastify";
 import {
   CREATE_REVIEW_REQUEST,
   CREATE_REVIEW_SUCCESS,
@@ -96,6 +96,12 @@ export const deleteReviews = (productId) => async (dispatch) => {
       type: DELETE_REVIEW_SUCCESS,
       payload: data.reviews,
     });
+
+    toast.success("Review deleted successfully", {
+      autoClose: 500,
+      theme: "colored",
+    });
+
   } catch (error) {
     console.log(error);
     dispatch({
