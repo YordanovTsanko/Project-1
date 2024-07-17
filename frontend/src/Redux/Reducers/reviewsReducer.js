@@ -16,6 +16,7 @@ import {
 
 const initialState = {
   reviews: [],
+  review: {},
   loading: true,
   error: null,
 };

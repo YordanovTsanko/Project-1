@@ -112,6 +112,7 @@ const SingleCategory = () => {
               >
                 {products.map((prod) => (
                   <Box
+                    key={prod._id}
                     style={{
                       display: "flex",
                       justifyContent: "center",
@@ -121,7 +122,6 @@ const SingleCategory = () => {
                   >
                     <Link
                       to={`/product/type/${cat}/${prod._id}`}
-                      key={prod._id}
                       style={{ width: "100%" }}
                     >
                       <ProductCard prod={prod} />
