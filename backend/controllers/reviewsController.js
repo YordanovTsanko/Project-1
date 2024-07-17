@@ -117,7 +117,7 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
     );
   }
 
-  await review.findByIdAndDelete(reviewId);
+  await Reviews.findByIdAndDelete(reviewId);
 
   res.status(200).json({
     success: true,

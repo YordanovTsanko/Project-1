@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { toast } from "react-toastify";
 import {
   CREATE_REVIEW_REQUEST,
   CREATE_REVIEW_SUCCESS,
@@ -89,19 +89,22 @@ export const editReview = (newData, reviewId) => async (dispatch) => {
 export const deleteReviews = (productId) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_REVIEW_REQUEST });
-    
+
     const { data } = await axios.delete(`/api/v1/review/delete/${productId}`);
 
     dispatch({
       type: DELETE_REVIEW_SUCCESS,
       payload: data.reviews,
     });
+
+    toast.success("Review deleted successfully", {
+      autoClose: 500,
+      theme: "colored",
+    });
   } catch (error) {
-    console.log(error);
     dispatch({
       type: DELETE_REVIEW_FAIL,
-      payload:
-        error.response.data.errMessage || "Failed to delete the review!",
+      payload: error.response.data.errMessage || "Failed to delete the review!",
     });
   }
 };
