@@ -36,10 +36,11 @@ const UpdateDetails = () => {
     lastName: "",
     phoneNumber: "",
     email: "",
+    country: "",
     address: "",
-    zipCode: "",
+    postCode: 0,
     city: "",
-    userState: "",
+    state: "",
     id: "",
   });
   const [password, setPassword] = useState({
@@ -83,6 +84,10 @@ const UpdateDetails = () => {
             lastName: response.data.user.lastName,
             phoneNumber: response.data.user.phoneNumber,
             email: response.data.user.email,
+            address: response.data.user.address || null,
+            postCode: response.data.user.postCode || null,
+            city: response.data.user.city || null,
+            state: response.data.user.state || null,
             id: response.data.user._id,
           }));
         } catch (error) {
@@ -186,20 +191,20 @@ const UpdateDetails = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                type="tel"
+                type="number"
                 label="Postal/Zip Code"
-                name="zipCode"
-                value={userDetails.zipCode || ""}
+                name="postCode"
+                value={userDetails.postCode || ""}
                 onChange={handleOnChange}
                 variant="outlined"
                 fullWidth
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              <TextField 
                 label="Province/State"
-                name="userState"
-                value={userDetails.userState || ""}
+                name="state"
+                value={userDetails.state || ""}
                 onChange={handleOnChange}
                 variant="outlined"
                 fullWidth

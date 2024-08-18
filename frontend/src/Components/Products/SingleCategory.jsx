@@ -8,11 +8,13 @@ import { BiFilterAlt } from "react-icons/bi";
 import ProductCard from "./ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../Redux/Actions/productsActions";
+import { filterProducts } from "../Layouts/filterFunc";
 
 const SingleCategory = () => {
-  const [title, setTitle] = useState("All");
-
   const { loading, error, products } = useSelector((state) => state.products);
+
+  const [title, setTitle] = useState("All");
+  const [filteredProducts, setFilteredProducts] = useState({});
 
   const { cat } = useParams();
 
@@ -28,11 +30,18 @@ const SingleCategory = () => {
 
   const handleChange = (e) => {
     setTitle(e.target.value);
+    setFilteredProducts(filterProducts(products, e.target.value));
   };
 
   useEffect(() => {
     dispatch(getProducts(cat));
   }, [cat, dispatch]);
+
+  useEffect(() => {
+    if (products) {
+      setFilteredProducts(filterProducts(products, "ALL"));
+    }
+  }, [products]);
 
   return (
     <>
@@ -69,7 +78,7 @@ const SingleCategory = () => {
             minHeight: "calc(100vh - 170px)",
           }}
         >
-          {products?.length > 0 ? (
+          {filteredProducts?.length > 0 ? (
             <>
               <Box
                 sx={{
@@ -110,7 +119,7 @@ const SingleCategory = () => {
                   },
                 }}
               >
-                {products.map((prod) => (
+                {filteredProducts.map((prod) => (
                   <Box
                     key={prod._id}
                     style={{

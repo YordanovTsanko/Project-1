@@ -55,19 +55,16 @@ const Profile = () => {
           <b>Phone Number:</b> 0{user?.phoneNumber}
         </Typography>
         <Typography variant="body1" gutterBottom>
-          <b>Country:</b> Not added
+          <b>Address:</b> {user?.address}
         </Typography>
         <Typography variant="body1" gutterBottom>
-          <b>Address:</b> Not added
+          <b>City:</b> {user?.city}
         </Typography>
         <Typography variant="body1" gutterBottom>
-          <b>City:</b> Not added
+          <b>Postal/Zip Code:</b> {user?.postCode}
         </Typography>
         <Typography variant="body1" gutterBottom>
-          <b>Postal/Zip Code:</b> Not added
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          <b>Province/State:</b> Not added
+          <b>Province/State:</b> {user?.state}
         </Typography>
       </Box>
       <Box sx={{ display: "flex", gap: 5, marginBottom: 10 }}>

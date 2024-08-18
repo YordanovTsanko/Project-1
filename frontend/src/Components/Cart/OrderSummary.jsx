@@ -32,7 +32,7 @@ const OrderSummary = ({ total, shippingCoast }) => {
               SubTotal
             </Typography>
             <Typography variant="h6" component="div" color="primary">
-              ₹{total - shippingCoast}
+              £{total - shippingCoast}
             </Typography>
           </Box>
           <Box

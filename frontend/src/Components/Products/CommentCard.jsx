@@ -15,7 +15,6 @@ import { GiCancel } from "react-icons/gi";
 import { useDispatch } from "react-redux";
 import {
   editReview,
-  getProductReviews,
   deleteReviews,
 } from "../../Redux/Actions/reviewsActions";
 

@@ -21,6 +21,22 @@ const userSchema = new mongoose.Schema({
     required: [true, "Please enter a phone number"],
     maxLength: [15, "Phone number must be less than 15 numbers"],
   },
+  address: {
+    type: String,
+    maxLength: [50, "Address must be less than 50 characters"],
+  },
+  city: {
+    type: String,
+    maxLength: [20, "City must be less than 20 characters"],
+  },
+  postCode: {
+    type: Number,
+    maxLength: [20, "Post/Zip code must be less than 20 numbers"],
+  },
+  state: {
+    type: String,
+    maxLength: [20, "Province/State must be less than 20 characters"],
+  },
   password: {
     type: String,
     required: [true, "Please enter a password"],

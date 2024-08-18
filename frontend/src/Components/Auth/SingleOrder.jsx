@@ -188,12 +188,26 @@ const SingleOrder = () => {
                       >
                         Price: £{item.price.toFixed(2)}
                       </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: "text.secondary",
+                          "@media (max-width: 610px)": {
+                            fontSize: "0.9rem",
+                          },
+                        }}
+                      >
+                        Total: £{(item.price * item.quantity).toFixed(2)}
+                      </Typography>
                     </Box>
                   </Box>
                 </Paper>
               ))}
             </Box>
           </TableContainer>
+          <Typography variant="h6" sx={{ marginTop: 2 }}>
+            Shipping: £{(20).toFixed(2)}
+          </Typography>
           <Typography variant="h6" sx={{ marginTop: 2 }}>
             Total Price: £{orderDetails?.itemsPrice.toFixed(2)}
           </Typography>

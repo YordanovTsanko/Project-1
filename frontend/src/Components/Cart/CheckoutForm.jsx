@@ -7,19 +7,19 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 
 const CheckoutForm = () => {
-  const { isAuthenticated, loading } = useSelector((state) => state.auth);
+  const { user,isAuthenticated, loading } = useSelector((state) => state.auth);
 
   const navigate = useNavigate();
 
   const [shippingInfo, setShippingInfo] = useState({
-    firstName: "",
-    lastName: "",
-    phoneNumber: "",
-    orderEmail: "",
-    address: "",
-    zipCode: "",
-    city: "",
-    state: "",
+    firstName: user?.firstName,
+    lastName: user?.lastName,
+    phoneNumber: user?.phoneNumber,
+    orderEmail: user?.email,
+    address: user?.address,
+    zipCode: user?.postCode,
+    city: user?.city,
+    state: user?.state,
   });
 
   const isAnyFieldEmpty = () => {

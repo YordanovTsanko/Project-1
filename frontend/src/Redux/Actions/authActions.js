@@ -118,7 +118,7 @@ export const updateProfile = (userData) => async (dispatch) => {
       },
     };
     const fixedData = (({ id, ...rest }) => rest)(userData);
-
+  console.log(fixedData)
     const { data } = await axios.put(
       `/api/v1/user/edit/${userData.id}`,
       fixedData,

@@ -15,6 +15,7 @@ const auth = require("./routes/auth");
 const products = require("./routes/products");
 const orders = require("./routes/orders");
 const reviews = require("./routes/reviews");
+const productRoutes = require('./utils/addRandomProducts');
 
 // Setting up .env file
 dotenv.config({ path: ".env" });
@@ -92,6 +93,7 @@ app.use("/api/v1", auth);
 app.use("/api/v1", products);
 app.use("/api/v1", orders);
 app.use("/api/v1", reviews);
+app.use("/api/v1", productRoutes);
 
 //Middleware errors
 app.use(errorMiddleware);

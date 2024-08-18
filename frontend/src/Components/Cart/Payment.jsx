@@ -160,7 +160,7 @@ const Payment = () => {
           <ListItem>
             <ListItemText primary="State" />
             <Typography variant="subtitle1">
-              {shippingInfo && shippingInfo.city ? shippingInfo.city : ""}
+              {shippingInfo && shippingInfo.state ? shippingInfo.state : ""}
             </Typography>
           </ListItem>
           <Divider />
