@@ -52,25 +52,25 @@ const Profile = () => {
           <b>Email:</b> {user?.email}
         </Typography>
         <Typography variant="body1" gutterBottom>
-          <b>Phone Number:</b> {user?.phoneNumber}
+          <b>Phone Number:</b> 0{user?.phoneNumber}
         </Typography>
         <Typography variant="body1" gutterBottom>
-          <b>Country:</b> Bulgaria
+          <b>Country:</b> Not added
         </Typography>
         <Typography variant="body1" gutterBottom>
-          <b>Address:</b> jk. Eshek Siki
+          <b>Address:</b> Not added
         </Typography>
         <Typography variant="body1" gutterBottom>
-          <b>City:</b> Razgrad
+          <b>City:</b> Not added
         </Typography>
         <Typography variant="body1" gutterBottom>
-          <b>Postal/Zip Code:</b> 7200
+          <b>Postal/Zip Code:</b> Not added
         </Typography>
         <Typography variant="body1" gutterBottom>
-          <b>Province/State:</b> Razgrad
+          <b>Province/State:</b> Not added
         </Typography>
       </Box>
-      <Box sx={{ display: "flex", gap: 5 }}>
+      <Box sx={{ display: "flex", gap: 5, marginBottom: 10 }}>
         <Link to="/profile/edit">
           <Button variant="contained" color="primary" sx={{ mt: 2 }}>
             Edit Profile

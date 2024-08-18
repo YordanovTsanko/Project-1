@@ -35,6 +35,18 @@ exports.createReview = catchAsyncErrors(async (req, res, next) => {
     comment,
   });
 
+  const reviews = await Reviews.find({ product: productId });
+
+  let totalRating = 0;
+
+  reviews.forEach((rev) => {
+    totalRating += rev.rating;
+  });
+
+  product.rating = totalRating / reviews.length;
+
+  await product.save();
+
   res.status(201).json({
     success: true,
     review,
@@ -92,6 +104,19 @@ exports.editReview = catchAsyncErrors(async (req, res, next) => {
 
   await review.save();
 
+  const product = await Products.findById(review.product);
+  const reviews = await Reviews.find({ product: product._id });
+
+  let totalRating = 0;
+
+  reviews.forEach((rev) => {
+    totalRating += rev.rating;
+  });
+
+  product.rating = totalRating / reviews.length;
+
+  await product.save();
+
   res.status(200).json({
     success: true,
     review,
@@ -114,6 +139,7 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Review not found", 404));
   }
 
+  const productId = review.product;
   if (review.userID.toString() !== req.user._id.toString()) {
     return next(
       new ErrorHandler("You are not authorized to delete this review", 403)
@@ -121,6 +147,19 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
   }
 
   const rdata = await Reviews.findByIdAndDelete(reviewId);
+
+  const product = await Products.findById(productId);
+  const reviews = await Reviews.find({ product: productId });
+
+  let totalRating = 0;
+
+  reviews.forEach((rev) => {
+    totalRating += rev.rating;
+  });
+
+  product.rating = reviews.length > 0 ? totalRating / reviews.length : 0;
+
+  await product.save();
 
   res.status(200).json({
     success: true,

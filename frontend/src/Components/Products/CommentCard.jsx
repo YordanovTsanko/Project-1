@@ -34,8 +34,6 @@ const CommentCard = ({ review, productId, isAuthToEdit }) => {
     dispatch(
       editReview({ comment: editedComment, rating: editedRating }, review._id)
     );
-
-    dispatch(getProductReviews(productId));
   };
 
   function formatTimestamp(timestamp) {

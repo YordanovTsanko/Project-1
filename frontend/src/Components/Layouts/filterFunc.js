@@ -1,21 +1,16 @@
 //reviews filters
-const filterReviews = (reviews, option) => {
-  switch (option) {
+export const filterReviews = (reviews, filter) => {
+  switch (filter) {
     case "Newest First":
-      return reviews
-        .slice()
-        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      return reviews.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
     case "Oldest First":
-      return reviews
-        .slice()
-        .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+      return reviews.sort((a, b) => new Date(a.updatedAt) - new Date(b.updatedAt));
     case "Positive First":
-      return reviews.slice().sort((a, b) => b.rating - a.rating);
+      return reviews.sort((a, b) => b.rating - a.rating);
     case "Negative First":
-      return reviews.slice().sort((a, b) => a.rating - b.rating);
+      return reviews.sort((a, b) => a.rating - b.rating);
     default:
       return reviews;
   }
 };
 
-export { filterReviews };

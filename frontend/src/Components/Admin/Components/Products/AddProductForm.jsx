@@ -7,6 +7,7 @@ import {
   MenuItem,
   Select,
   TextField,
+  Typography,
 } from "@mui/material";
 
 const AdminProductPage = ({ productInfo, setProductInfo }) => {
@@ -16,7 +17,7 @@ const AdminProductPage = ({ productInfo, setProductInfo }) => {
 
   //   const deleteProduct = async () => {};
   const categoryDropdown = [
-    "shoe",
+    "shoes",
     "woman cloths",
     "man cloths",
     "electronics",
@@ -115,6 +116,17 @@ const AdminProductPage = ({ productInfo, setProductInfo }) => {
               variant="outlined"
               name="description"
             />
+            <Typography
+              variant="body2"
+              color={
+                productInfo.description.length > 2000
+                  ? "red"
+                  : "textSecondary"
+              }
+              sx={{ textAlign: "right", marginTop: "5px" }}
+            >
+              {productInfo.description.length}/{2000}
+            </Typography>
           </Grid>
         </Grid>
       </Container>

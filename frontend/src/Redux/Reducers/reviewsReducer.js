@@ -16,7 +16,6 @@ import {
 
 const initialState = {
   reviews: [],
-  review: {},
   loading: true,
   error: null,
 };
@@ -32,17 +31,27 @@ export const reviewsReducer = (state = initialState, action) => {
         loading: true,
       };
     case CREATE_REVIEW_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        reviews: [...state.reviews, action.payload],
+      };
     case EDIT_REVIEW_SUCCESS:
       return {
         ...state,
         loading: false,
-        review: action.payload,
+        reviews: state.reviews.map(
+          (review) =>
+            review._id === action.payload._id ? action.payload : review
+        ),
       };
     case DELETE_REVIEW_SUCCESS:
       return {
         ...state,
         loading: false,
-        reviews: state.reviews.filter(review => review.id !== action.payload),
+        reviews: state.reviews.filter(
+          (review) => review._id !== action.payload
+        ),
       };
     case GET_PRODUCT_REVIEWS_SUCCESS:
       return {

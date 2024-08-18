@@ -90,10 +90,10 @@ export const deleteReviews = (productId) => async (dispatch) => {
     dispatch({ type: DELETE_REVIEW_REQUEST });
 
     const { data } = await axios.delete(`/api/v1/review/delete/${productId}`);
-
+   console.log(data.review._id)
     dispatch({
       type: DELETE_REVIEW_SUCCESS,
-      payload: data._id,
+      payload: data.review._id,
     });
 
     toast.success(data.message, {

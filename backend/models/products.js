@@ -23,7 +23,7 @@ const productSchema = new mongoose.Schema({
     required: [true, "Please select an category"],
     enum: {
       values: [
-        "shoe",
+        "shoes",
         "woman cloths",
         "man cloths",
         "electronics",
@@ -42,6 +42,10 @@ const productSchema = new mongoose.Schema({
   stock: {
     type: Number,
     default: 1,
+  },
+  rating: {
+    type: Number,
+    default: 0,
   },
 });
 

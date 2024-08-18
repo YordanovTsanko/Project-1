@@ -183,10 +183,10 @@ const ProductDetail = () => {
                     />
                   </Box>
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={6} >
                   <Chip
                     label={
-                      product.price > 1000 ? "Upto 9% off" : "Upto 38% off"
+                      product.price < 1000 ? "Upto 9% off" : "Upto 38% off"
                     }
                     variant="outlined"
                     sx={{
@@ -207,7 +207,7 @@ const ProductDetail = () => {
                   <Typography>{product.description}</Typography>
                   <Rating
                     name="read-only"
-                    value={4}
+                    value={product.rating}
                     readOnly
                     precision={0.5}
                     style={{ marginTop: "20px" }}

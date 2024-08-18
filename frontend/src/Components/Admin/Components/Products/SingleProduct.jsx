@@ -117,7 +117,7 @@ const SingleProduct = () => {
                 <TableRow>
                   <TableCell>
                     <Typography variant="body1" gutterBottom>
-                      <b>Ratings:</b> {product?.ratings}
+                      <b>Ratings:</b> {product?.rating}
                     </Typography>
                   </TableCell>
                 </TableRow>

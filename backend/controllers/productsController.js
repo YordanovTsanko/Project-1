@@ -7,7 +7,7 @@ exports.getAllProdcutsByCat = catchAsyncErrors(async (req, res, next) => {
   try {
     if (
       ![
-        "shoe",
+        "shoes",
         "woman cloths",
         "man cloths",
         "gym accessories",

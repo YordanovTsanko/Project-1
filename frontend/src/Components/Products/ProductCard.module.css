@@ -3,8 +3,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 400px;
-  padding: 10px;
 }
 
 .card_action {
@@ -16,8 +14,7 @@
 
 .cart_box {
   margin: 0 auto;
-  width: 100%;
-  height: 250px;
+  height: 200px;
 }
 
 .cart_img {

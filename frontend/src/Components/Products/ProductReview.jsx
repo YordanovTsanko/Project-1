@@ -58,7 +58,7 @@ const ProductReview = ({ isAuthenticated, setOpenAlert, id }) => {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState("");
   const [comment, setComment] = useState("");
-  const [title, setTitle] = useState("Oldest First");
+  const [title, setTitle] = useState("Newest First");
 
   const commentFilter = [
     "Newest First",
@@ -72,12 +72,18 @@ const ProductReview = ({ isAuthenticated, setOpenAlert, id }) => {
   };
 
   useEffect(() => {
+    if (reviews) {
+      setFilteredReviews(filterReviews(reviews, "Newest First"));
+    }
+  }, [reviews]);
+
+  useEffect(() => {
     dispatch(getProductReviews(id));
   }, [dispatch, id]);
 
   useEffect(() => {
     if (error) {
-      console.log(error)
+      console.log(error);
       toast.error(error || "Unknown error, please try again later!", {
         autoClose: 1500,
         theme: "colored",
@@ -93,8 +99,7 @@ const ProductReview = ({ isAuthenticated, setOpenAlert, id }) => {
     } else {
       setOpenAlert(false);
       dispatch(createReview({ comment, rating, productId: id }));
-      dispatch(getProductReviews(id));
-      setFilteredReviews({})
+      setFilteredReviews({});
       setComment("");
       setRating(null);
     }
@@ -225,9 +230,7 @@ const ProductReview = ({ isAuthenticated, setOpenAlert, id }) => {
             )}
           </Box>
         ) : (
-          <Typography
-            sx={{ textAlign: "center" }}
-          >
+          <Typography sx={{ textAlign: "center" }}>
             No reviews have been submitted for this product yet. Be the first to
             add a review!
           </Typography>

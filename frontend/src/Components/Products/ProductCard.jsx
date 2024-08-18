@@ -89,15 +89,15 @@ const ProductCard = ({ prod }) => {
 
           <Typography
             gutterBottom
-            variant="h5"
+            variant="h6"
             sx={{
-              mt: 2,
+              mt: 1,
               whiteSpace: "nowrap",
               overflow: "hidden",
               textOverflow: "ellipsis",
             }}
           >
-            {prod.name.length > 20 ? prod.name.slice(0, 20) + "..." : prod.name}
+            {prod.name.length > 15 ? prod.name.slice(0, 15) + "..." : prod.name}
           </Typography>
 
           <CardActions
@@ -107,11 +107,17 @@ const ProductCard = ({ prod }) => {
               width: "100%",
             }}
           >
-            <Typography variant="h6" color="primary">
+            <Typography variant="p" color="primary">
               £{prod.price}
             </Typography>
-            <Typography>
-              <Rating precision={0.5} name="read-only" value={2} readOnly />
+            <Typography variant="p">
+              <Rating
+                precision={0.5}
+                name="read-only"
+                value={prod.rating}
+                readOnly
+                style={{ fontSize: "1.2rem" }}
+              />
             </Typography>
           </CardActions>
         </CardActionArea>
