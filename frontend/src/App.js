@@ -15,7 +15,6 @@ import "react-toastify/dist/ReactToastify.css";
 import CheckoutForm from "./Components/Cart/CheckoutForm";
 import UpdateDetails from "./Components/Auth/UpdateDetails";
 import ForgotPasswordForm from "./Components/Auth/ForgotPasswordForm";
-import AdminLogin from "./Components/Admin/Pages/AdminLogin";
 import AdminProductPage from "./Components/Admin/Pages/AdminProductPage";
 import AdminHomePage from "./Components/Admin/Pages/AdminHomePage";
 import CopyRight from "./Components/Layouts/CopyRight";
@@ -26,6 +25,7 @@ import ThanksForOrder from "./Components/Cart/ThanksForOrder";
 import AdminUsersPage from "./Components/Admin/Pages/AdminUsersPage";
 import SingleProduct from "./Components/Admin/Components/Products/SingleProduct";
 import AdminOrdersPage from "./Components/Admin/Pages/AdminOrdersPage";
+import AdminProtectedRoute from "./Components/Admin/Components/AdminProtectedRoute";
 
 function App() {
   return (
@@ -66,12 +66,13 @@ function App() {
             <Route path="/order/placed" element={<ThanksForOrder />} />
 
             {/* Admin Routes */}
-            <Route path="/admin/login" element={<AdminLogin />} />
-            <Route path="/admin/dashboard" element={<AdminHomePage />} />
-            <Route path="/admin/products" element={<AdminProductPage />} />
-            <Route path="/admin/product/:id" element={<SingleProduct />} />
-            <Route path="/admin/users" element={<AdminUsersPage />} />
-            <Route path="/admin/orders" element={<AdminOrdersPage />} />
+            <Route element={<AdminProtectedRoute />}>
+              <Route path="/admin/dashboard" element={<AdminHomePage />} />
+              <Route path="/admin/products" element={<AdminProductPage />} />
+              <Route path="/admin/product/:id" element={<SingleProduct />} />
+              <Route path="/admin/users" element={<AdminUsersPage />} />
+              <Route path="/admin/orders" element={<AdminOrdersPage />} />
+            </Route>
           </Routes>
         </div>
         <CopyRight />

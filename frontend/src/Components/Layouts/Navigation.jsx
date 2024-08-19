@@ -235,7 +235,7 @@ const Navigation = () => {
             {isAuthenticated && (user?.role === "admin") && (
               <ListItem button onClick={handleDrawerClose}>
                 <NavLink
-                  to="/admin/login"
+                  to="/admin/dashboard"
                   style={{ display: "flex", alignItems: "center", gap: 8 }}
                 >
                   <SupervisorAccountIcon style={{ fontSize: 25 }} />

@@ -22,7 +22,12 @@ import {
   CLEAR_ERRORS,
 } from "../Constants/authConstants";
 
-export const authReducer = (state = { user: {} }, action) => {
+const initialState = {
+  loading: true,
+  user: {},
+};
+
+export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_REQUEST:
     case REGISTER_REQUEST:

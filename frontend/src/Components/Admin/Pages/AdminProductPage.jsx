@@ -1,10 +1,17 @@
 import React from "react";
 import axios from "axios";
-import { Button, Container, Grid, Skeleton, Typography } from "@mui/material";
-import FilterProduct from "../Components/Products/FilterProduct";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Skeleton,
+  Typography,
+} from "@mui/material";
 import AdminNav from "../Components/AdminNav";
 import SingleProductDisplay from "../Components/Products/SingleProductDisplay";
 import SearchBar from "../../Layouts/SearchBar";
+import AddProductButton from "../Components/Products/AddProductButton";
 
 const AdminProductPage = () => {
   const [loading, setLoading] = React.useState(true);
@@ -46,7 +53,7 @@ const AdminProductPage = () => {
     <Container
       component="main"
       sx={{
-        width:"100%",
+        width: "100%",
         minHeight: "calc(100vh - 224px)",
         pt: 1,
         "@media (min-width: 961px)": {
@@ -56,20 +63,44 @@ const AdminProductPage = () => {
     >
       <AdminNav />
 
-      <Typography sx={{ mt: 3 }} variant="h2" align="center" gutterBottom>
+      <Typography
+        sx={{
+          fontSize: {
+            xs: "1.5rem",
+            sm: "2rem",
+            md: "2.5rem",
+            lg: "3rem",
+          },
+          textAlign: "center",
+          mt:3
+        }}
+        variant="h2"
+        align="center"
+        gutterBottom
+      >
         All Products
       </Typography>
-      <Button
-        sx={{ margin: "0 auto" }}
-        variant="contained"
-        color="error"
-        onClick={handleAddRandomProducts}
-        disabled={loadingA}
+      <Box
+        sx={{
+          display: "flex",
+          gap: 2,
+          marginBottom: { xs: "5px", sm: "10px" },
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: { xs: "column", sm: "row" },
+        }}
       >
-        {loadingA ? "Adding Products..." : "Add 10 Products"}
-      </Button>
-      <FilterProduct />
-      <SearchBar />
+        <Button
+          variant="contained"
+          color="error"
+          onClick={handleAddRandomProducts}
+          disabled={loadingA}
+        >
+          {loadingA ? "Adding Products..." : "Add 10 Testing Products"}
+        </Button>
+        <AddProductButton />
+      </Box>
+      {/* <SearchBar /> */}
       {loading ? (
         <Skeleton variant="rectangular" height={200} />
       ) : (
