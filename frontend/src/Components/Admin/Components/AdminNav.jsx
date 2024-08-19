@@ -114,8 +114,8 @@ function AdminNav() {
               flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 700,
-              fontSize: "1.3rem",
-              letterSpacing: "0.2rem",
+              fontSize: "1rem",
+              letterSpacing: "0.1rem",
               color: "black",
               textDecoration: "none",
             }}

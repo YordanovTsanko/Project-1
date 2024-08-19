@@ -10,7 +10,6 @@ import {
 } from "@mui/material";
 import AdminNav from "../Components/AdminNav";
 import SingleProductDisplay from "../Components/Products/SingleProductDisplay";
-import SearchBar from "../../Layouts/SearchBar";
 import AddProductButton from "../Components/Products/AddProductButton";
 
 const AdminProductPage = () => {
@@ -55,7 +54,7 @@ const AdminProductPage = () => {
       sx={{
         width: "100%",
         minHeight: "calc(100vh - 224px)",
-        pt: 1,
+        pt: 5,
         "@media (min-width: 961px)": {
           pt: 0,
         },
@@ -100,7 +99,6 @@ const AdminProductPage = () => {
         </Button>
         <AddProductButton />
       </Box>
-      {/* <SearchBar /> */}
       {loading ? (
         <Skeleton variant="rectangular" height={200} />
       ) : (

@@ -34,7 +34,7 @@ const AdminUsersPage = () => {
       component="main"
       sx={{
         minHeight: "calc(100vh - 224px)",
-        pt: 1,
+        pt: 5,
 
         "@media (min-width: 961px)": {
           pt: 0,
